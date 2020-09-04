@@ -1,5 +1,8 @@
+function setСarrousel(id, images = [], interval = 8000) {
+    if (!id) {
+        return;
+    }
 
-function setСarrousel(id, images, ms) {
     let parent = document.querySelector(`#${id}`);
     parent.style.backgroundSize = '100%';
 
@@ -9,7 +12,7 @@ function setСarrousel(id, images, ms) {
 
     setInterval(() => {
         change(-1)
-    }, ms);
+    }, interval);
 
     function checkIndex() {
         let {length} = images;
