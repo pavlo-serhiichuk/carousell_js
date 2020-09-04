@@ -1,14 +1,15 @@
 
-function setСarrousel(id, images) {
+function setСarrousel(id, images, ms) {
     let parent = document.querySelector(`#${id}`);
     parent.style.backgroundSize = '100%';
 
     let currentIndex = 0;
 
-    createElement('button', '<', ['left-switcher'], parent, () => change(-1));
-    createElement('button', '>', ['right-switcher'], parent, () => change(1));
-
     change(0);
+
+    setInterval(() => {
+        change(-1)
+    }, ms);
 
     function checkIndex() {
         let {length} = images;
@@ -23,18 +24,5 @@ function setСarrousel(id, images) {
         currentIndex += step;
         checkIndex();
         parent.style.backgroundImage = `url(${images[currentIndex]}`;
-    }
-
-    function createElement(tagName, tagText, classNames, parent, onclick) {
-        let div = document.createElement(tagName);
-        div.innerHTML = tagText;
-
-        for (let className of classNames) {
-            div.classList.add(className);
-        }
-
-        if (onclick) div.addEventListener('click', onclick);
-        parent.append(div);
-        return div;
     }
 }
