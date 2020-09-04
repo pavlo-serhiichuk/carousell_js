@@ -1,10 +1,11 @@
-function setСarrousel(id, images = [], interval = 8000) {
+function setСarousel(id, images = [], interval = 8000) {
     if (!id) {
         return;
     }
 
     let parent = document.querySelector(`#${id}`);
     parent.style.backgroundSize = '100%';
+    parent.style.minHeight = '100px';
 
     let currentIndex = 0;
 
